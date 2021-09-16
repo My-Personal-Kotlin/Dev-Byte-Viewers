@@ -21,6 +21,7 @@ import com.devbyteviewer.viewmodels.DevByteAdapter
 import com.devbyteviewer.viewmodels.DevByteViewModel
 import com.devbyteviewer.viewmodels.DevByteViewModelFactory
 import com.devbyteviewer.viewmodels.VideoClick
+import com.google.android.material.snackbar.Snackbar
 
 /**
  * Show a list of DevBytes on screen.
@@ -108,6 +109,16 @@ class DevByteFragment : Fragment() {
         })
 
         binding.recyclerView.adapter = viewModelAdapter
+
+        viewModel.checkNetworkConnection.observe(viewLifecycleOwner, Observer {
+            if(it == true){
+                Snackbar.make(binding.recyclerView, "Refreshing Data", Snackbar.LENGTH_SHORT)
+                    .show()
+            }else{
+                Snackbar.make(binding.recyclerView, "No Network Connection", Snackbar.LENGTH_SHORT)
+                    .show()
+            }
+        })
 
 //        binding.root.findViewById<RecyclerView>(R.id.recycler_view).apply {
 //            layoutManager = LinearLayoutManager(context)
