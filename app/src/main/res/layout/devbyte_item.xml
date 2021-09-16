@@ -11,7 +11,7 @@
 
         <variable
             name="videoCallback"
-            type="com.devbyteviewer.ui.VideoClick" />
+            type="com.devbyteviewer.viewmodels.VideoClick" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
